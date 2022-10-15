@@ -34,6 +34,9 @@ public struct ScanResult {
 
     /// The type of code that was matched.
     public let type: AVMetadataObject.ObjectType
+    
+    /// The image at the time of the scan
+    public let image: UIImage
 }
 
 /// The operating mode for CodeScannerView.
