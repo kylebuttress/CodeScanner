@@ -1,3 +1,7 @@
+# KB Fork changes
+
+Added Image to ScanResult
+
 # CodeScanner
 
 <p>
