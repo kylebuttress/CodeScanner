@@ -34,12 +34,7 @@ public struct ScanResult {
 
     /// The type of code that was matched.
     public let type: AVMetadataObject.ObjectType
-   
-}
-
-@available(macCatalyst 14.0, *)
-public struct ScanImage {
-    /// The Image at time of success.
+    
     public let image: UIImage
    
 }
@@ -76,7 +71,8 @@ public struct CodeScannerView: UIViewControllerRepresentable {
     public var isTorchOn: Bool
     public var isGalleryPresented: Binding<Bool>
     public var videoCaptureDevice: AVCaptureDevice?
-    public var completion: (Result<ScanResult, ScanError, ScanImage>) -> Void
+    public var completion: (Result<ScanResult, ScanError>) -> Void
+    public var image: UIImage?
 
     public init(
         codeTypes: [AVMetadataObject.ObjectType],
@@ -89,7 +85,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
         isTorchOn: Bool = false,
         isGalleryPresented: Binding<Bool> = .constant(false),
         videoCaptureDevice: AVCaptureDevice? = AVCaptureDevice.default(for: .video),
-        completion: @escaping (Result<ScanResult, ScanError, ScanImage>) -> Void
+        completion: @escaping (Result<ScanResult, ScanError>) -> Void
     ) {
         self.codeTypes = codeTypes
         self.scanMode = scanMode
