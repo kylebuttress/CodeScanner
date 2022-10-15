@@ -37,6 +37,13 @@ public struct ScanResult {
    
 }
 
+@available(macCatalyst 14.0, *)
+public struct ScanImage {
+    /// The Image at time of success.
+    public let image: UIImage
+   
+}
+
 /// The operating mode for CodeScannerView.
 public enum ScanMode {
     /// Scan exactly one code, then stop.
