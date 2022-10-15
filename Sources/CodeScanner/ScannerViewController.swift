@@ -432,7 +432,7 @@ extension CodeScannerView {
             if let metadataObject = metadataObjects.first {
                 guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
                 guard let stringValue = readableObject.stringValue else { return }
-                guard let image = scanImage else { return }
+                guard let image = scanImage! else { return }
                 guard didFinishScanning == false else { return }
                 let result = ScanResult(string: stringValue, type: readableObject.type, image: image)
 
