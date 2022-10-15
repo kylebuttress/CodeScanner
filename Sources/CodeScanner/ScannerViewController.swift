@@ -65,13 +65,14 @@ extension CodeScannerView {
                     qrCodeLink += feature.messageString!
                 }
                 
-                parentView.image = UIImage(ciImage: ciImage)
+                let image = UIImage(ciImage: ciImage)
 
                 if qrCodeLink == "" {
                     didFail(reason: .badOutput)
                 } else {
                     let result = ScanResult(string: qrCodeLink, type: .qr)
                     found(result)
+                    setImage(ScanImage(image: image)
                 }
             } else {
                 print("Something went wrong")
