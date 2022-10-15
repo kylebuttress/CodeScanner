@@ -18,6 +18,7 @@ extension CodeScannerView {
         var codesFound = Set<String>()
         var didFinishScanning = false
         var lastTime = Date(timeIntervalSince1970: 0)
+        var scanImage: UIimage?
         private let showViewfinder: Bool
         
         private var isGalleryShowing: Bool = false {
@@ -70,8 +71,8 @@ extension CodeScannerView {
                 if qrCodeLink == "" {
                     didFail(reason: .badOutput)
                 } else {
-                    parentView.image = image
-                    let result = ScanResult(string: qrCodeLink, type: .qr, image: image)
+                    scanImage = image
+                    let result = ScanResult(string: qrCodeLink, type: .qr, image: scanImage)
                     found(result)
 
                 }
@@ -431,8 +432,9 @@ extension CodeScannerView {
             if let metadataObject = metadataObjects.first {
                 guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
                 guard let stringValue = readableObject.stringValue else { return }
+                guard let image = scanImage else { return }
                 guard didFinishScanning == false else { return }
-                let result = ScanResult(string: stringValue, type: readableObject.type, image: parentView.image!)
+                let result = ScanResult(string: stringValue, type: readableObject.type, image: image)
 
                 switch parentView.scanMode {
                 case .once:
