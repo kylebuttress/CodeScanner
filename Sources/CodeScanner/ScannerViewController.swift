@@ -72,7 +72,7 @@ extension CodeScannerView {
                     didFail(reason: .badOutput)
                 } else {
                     scanImage = image
-                    let result = ScanResult(string: qrCodeLink, type: .qr, image: scanImage)
+                    let result = ScanResult(string: qrCodeLink, type: .qr, image: scanImage!)
                     found(result)
 
                 }
