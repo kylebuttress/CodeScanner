@@ -478,6 +478,10 @@ extension CodeScannerView {
         func didFail(reason: ScanError) {
             parentView.completion(.failure(reason))
         }
+            
+        func setImage(image: ScanImage) {
+            parentView.completion(.image(image)
+         }
         
     }
 }
