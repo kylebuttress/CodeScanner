@@ -434,7 +434,7 @@ extension CodeScannerView {
                 guard let stringValue = readableObject.stringValue else { return }
                 guard let image = scanImage else { return }
                 guard didFinishScanning == false else { return }
-                let result = ScanResult(string: stringValue, type: readableObject.type, image: image!)
+                let result = ScanResult(string: stringValue, type: readableObject.type, image: image)
 
                 switch parentView.scanMode {
                 case .once:
