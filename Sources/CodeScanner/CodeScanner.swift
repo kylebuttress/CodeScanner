@@ -89,7 +89,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
         isTorchOn: Bool = false,
         isGalleryPresented: Binding<Bool> = .constant(false),
         videoCaptureDevice: AVCaptureDevice? = AVCaptureDevice.default(for: .video),
-        completion: @escaping (Result<ScanResult, ScanError>) -> Void
+        completion: @escaping (Result<ScanResult, ScanError, ScanImage>) -> Void
     ) {
         self.codeTypes = codeTypes
         self.scanMode = scanMode
