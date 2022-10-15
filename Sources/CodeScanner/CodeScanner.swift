@@ -76,8 +76,7 @@ public struct CodeScannerView: UIViewControllerRepresentable {
     public var isTorchOn: Bool
     public var isGalleryPresented: Binding<Bool>
     public var videoCaptureDevice: AVCaptureDevice?
-    public var completion: (Result<ScanResult, ScanError>) -> Void
-    public var image: UIImage?
+    public var completion: (Result<ScanResult, ScanError, ScanImage>) -> Void
 
     public init(
         codeTypes: [AVMetadataObject.ObjectType],
