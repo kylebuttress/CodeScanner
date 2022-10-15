@@ -35,7 +35,7 @@ public struct ScanResult {
     /// The type of code that was matched.
     public let type: AVMetadataObject.ObjectType
     
-    public let image: UIImage
+    //public let image: UIImage
    
 }
 
