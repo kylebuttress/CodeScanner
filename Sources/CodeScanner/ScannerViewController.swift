@@ -18,7 +18,7 @@ extension CodeScannerView {
         var codesFound = Set<String>()
         var didFinishScanning = false
         var lastTime = Date(timeIntervalSince1970: 0)
-        var scanImage: UIimage?
+        var scanImage: UIImage?
         private let showViewfinder: Bool
         
         private var isGalleryShowing: Bool = false {
