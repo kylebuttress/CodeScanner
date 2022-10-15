@@ -70,9 +70,10 @@ extension CodeScannerView {
                 if qrCodeLink == "" {
                     didFail(reason: .badOutput)
                 } else {
-                    let result = ScanResult(string: qrCodeLink, type: .qr)
+                    parentView.image = image
+                    let result = ScanResult(string: qrCodeLink, type: .qr, image: image)
                     found(result)
-                    setImage(image: ScanImage(image: image)
+
                 }
             } else {
                 print("Something went wrong")
@@ -125,7 +126,9 @@ extension CodeScannerView {
             // Send back their simulated data, as if it was one of the types they were scanning for
             found(ScanResult(
                 string: parentView.simulatedData,
-                type: parentView.codeTypes.first ?? .qr
+                type: parentView.codeTypes.first ?? .qr,
+                image: UiImage()
+                
             ))
         }
         
@@ -429,7 +432,7 @@ extension CodeScannerView {
                 guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
                 guard let stringValue = readableObject.stringValue else { return }
                 guard didFinishScanning == false else { return }
-                let result = ScanResult(string: stringValue, type: readableObject.type)
+                let result = ScanResult(string: stringValue, type: readableObject.type, image: parentView.image)
 
                 switch parentView.scanMode {
                 case .once:
@@ -478,10 +481,6 @@ extension CodeScannerView {
         func didFail(reason: ScanError) {
             parentView.completion(.failure(reason))
         }
-            
-        func setImage(image: ScanImage) {
-            parentView.completion(.image(image)
-         }
         
     }
 }
