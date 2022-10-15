@@ -64,11 +64,13 @@ extension CodeScannerView {
                 for feature in features as! [CIQRCodeFeature] {
                     qrCodeLink += feature.messageString!
                 }
+                
+                let image = UIImage(ciImage: ciImage)
 
                 if qrCodeLink == "" {
                     didFail(reason: .badOutput)
                 } else {
-                    let result = ScanResult(string: qrCodeLink, type: .qr)
+                    let result = ScanResult(string: qrCodeLink, type: .qr, image: image)
                     found(result)
                 }
             } else {
